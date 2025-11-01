@@ -20,6 +20,11 @@ export default function Page() {
 
         // Start the sign-in process using the email and password provided
         try {
+            if (!emailAddress || !password) {
+                setError("Email and password are required.");
+                return;
+            }
+
             const signInAttempt = await signIn.create({
                 identifier: emailAddress,
                 password,
@@ -94,7 +99,6 @@ export default function Page() {
                         </TouchableOpacity>
                     </Link>
                 </View>
-
             </View>
         </View>
     )
